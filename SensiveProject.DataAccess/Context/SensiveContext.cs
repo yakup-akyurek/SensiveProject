@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using SensiveProject.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -8,8 +9,9 @@ using System.Threading.Tasks;
 
 namespace SensiveProject.DataAccess.Context
 {
-    public class SensiveContext:DbContext
+    public class SensiveContext : IdentityDbContext<AppUser,AppRole,int>
     {
+        //16
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=DESKTOP-I6T4N95;initial Catalog=SensiveBlogDb;Trusted_Connection=True;TrustServerCertificate=True;");

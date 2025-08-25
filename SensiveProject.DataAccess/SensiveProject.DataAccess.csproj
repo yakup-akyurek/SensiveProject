@@ -10,7 +10,6 @@
     <Folder Include="Concrete\" />
     <Folder Include="Entity Framework\" />
     <Folder Include="UnitOfWork\" />
-    <Folder Include="Repositories\" />
   </ItemGroup>
 
   <ItemGroup>

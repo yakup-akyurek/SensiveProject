@@ -15,4 +15,8 @@
     <Folder Include="ValidationRules\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SensiveProject.DataAccess\SensiveProject.DataAccess.csproj" />
+  </ItemGroup>
+
 </Project>

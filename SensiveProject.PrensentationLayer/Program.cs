@@ -1,7 +1,17 @@
+using Microsoft.Extensions.DependencyInjection;
+using SensiveProject.DataAccess.Context;
+using SensiveProject.EntityLayer.Concrete;
+using SensiveProject.PrensentationLayer.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+//buraya yazýlan kodlar yapýcý metot kayýtlarýný yapar?
+builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<SensiveContext>().AddErrorDescriber<CustomIdentiytValidator>();
+builder.Services.AddDbContext<SensiveContext>();
+
 builder.Services.AddControllersWithViews();
+
 
 var app = builder.Build();
 
@@ -17,6 +27,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseAuthentication();
 
 app.UseAuthorization();
 
