@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Concrete\" />
-    <Folder Include="Entity Framework\" />
     <Folder Include="UnitOfWork\" />
   </ItemGroup>
 

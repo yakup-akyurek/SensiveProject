@@ -1,5 +1,9 @@
 using Microsoft.Extensions.DependencyInjection;
+using SensiveProject.BusinessLayer.Abstract;
+using SensiveProject.BusinessLayer.Concrete;
+using SensiveProject.DataAccess.Abstract;
 using SensiveProject.DataAccess.Context;
+using SensiveProject.DataAccess.Entity_Framework;
 using SensiveProject.EntityLayer.Concrete;
 using SensiveProject.PrensentationLayer.Models;
 
@@ -9,6 +13,19 @@ var builder = WebApplication.CreateBuilder(args);
 //buraya yazýlan kodlar yapýcý metot kayýtlarýný yapar?
 builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<SensiveContext>().AddErrorDescriber<CustomIdentiytValidator>();
 builder.Services.AddDbContext<SensiveContext>();
+builder.Services.AddScoped<ICategoryDal,EfCategoryDal>();
+builder.Services.AddScoped<ICategoryService, CategoryManager>();
+
+builder.Services.AddScoped<IArticleDal, EfArticleDal>();
+builder.Services.AddScoped<IArticleService, ArticleManager>();
+
+builder.Services.AddScoped<ICommentDal, EfCommentDal>();
+builder.Services.AddScoped<ICommentService, CommentManager>();
+
+builder.Services.AddScoped<IContactDal, EfContactDal>();
+builder.Services.AddScoped<IContactService, ContactManager>();
+
+
 
 builder.Services.AddControllersWithViews();
 

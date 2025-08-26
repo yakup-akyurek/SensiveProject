@@ -12,6 +12,8 @@ namespace SensiveProject.EntityLayer.Concrete
         public string Detail { get; set; }
         public DateTime CreatedTime { get; set; }
         public bool Status { get; set; }
+        public int AppUserId { get; set; }
+        public AppUser AppUser { get; set; }
 
     }
 }
