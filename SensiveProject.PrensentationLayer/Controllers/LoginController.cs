@@ -5,11 +5,11 @@ using SensiveProject.PrensentationLayer.Models;
 
 namespace SensiveProject.PrensentationLayer.Controllers
 {
-    public class LoginController1 : Controller
+    public class LoginController : Controller
     {
         private readonly SignInManager<AppUser> _signInManager;
 
-        public LoginController1(SignInManager<AppUser> signInManager)
+        public LoginController(SignInManager<AppUser> signInManager)
         {
             _signInManager = signInManager;
         }

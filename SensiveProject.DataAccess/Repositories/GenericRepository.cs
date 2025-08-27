@@ -41,11 +41,13 @@ namespace SensiveProject.DataAccess.Repositories
         public void Insert(T entity)
         {
             _context.Set<T>().Add(entity); //T tipindeki yeni veriyi ekleme işlemi yapıldı.
+            _context.SaveChanges();
         }
 
         public void Update(T entity)
         {
             _context.Set<T>().Update(entity); //T tipindeki var olan veriyi güncelleme işlemi yapıldı.
+            _context.SaveChanges();
         }
     }
 }

@@ -10,9 +10,11 @@ using SensiveProject.PrensentationLayer.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-//buraya yazýlan kodlar yapýcý metot kayýtlarýný yapar?
+//buraya yazýlan kodlar DI olarak tüm projede kullanýlýr
 builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<SensiveContext>().AddErrorDescriber<CustomIdentiytValidator>();
+
 builder.Services.AddDbContext<SensiveContext>();
+
 builder.Services.AddScoped<ICategoryDal,EfCategoryDal>();
 builder.Services.AddScoped<ICategoryService, CategoryManager>();
 
