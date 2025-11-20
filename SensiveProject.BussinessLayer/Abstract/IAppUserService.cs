@@ -7,12 +7,8 @@ using System.Threading.Tasks;
 
 namespace SensiveProject.BusinessLayer.Abstract
 {
-    public interface IArticleService:IGenericService<Article>
+    public interface IAppUserService :IGenericService<AppUser>
     {
-        List<Article> TArticleListWithCategory();
-        List<Article> TArticleListWithAppUser();
-
-
 
     }
 }

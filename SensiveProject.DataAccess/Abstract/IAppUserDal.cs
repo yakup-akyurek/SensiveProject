@@ -7,9 +7,7 @@ using System.Threading.Tasks;
 
 namespace SensiveProject.DataAccess.Abstract
 {
-    public interface IArticleDal:IGenericDal<Article>
+    public interface IAppUserDal : IGenericDal<AppUser>
     {
-        List<Article> ArticleListWithCategory();
-        List<Article> ArticleListWithAppUser();
     }
 }

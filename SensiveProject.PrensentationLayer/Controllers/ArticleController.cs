@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using SensiveProject.BusinessLayer.Abstract;
 using System.Drawing.Text;
 
@@ -7,10 +8,14 @@ namespace SensiveProject.PrensentationLayer.Controllers
     public class ArticleController : Controller
     {
         private readonly IArticleService _articleService;
+        private readonly ICategoryService _categoryService;
+        private readonly IAppUserService _appUserService;
 
-        public ArticleController(IArticleService articleService)
+        public ArticleController(IArticleService articleService, ICategoryService categoryService, IAppUserService appUserService)
         {
             _articleService = articleService;
+            _categoryService = categoryService;
+            _appUserService = appUserService;
         }
 
         public IActionResult ArticleList()
@@ -20,5 +25,37 @@ namespace SensiveProject.PrensentationLayer.Controllers
 
             return View(values);
         }
+        public IActionResult ArticlelistWithCategory()
+        {
+            var values = _articleService.TArticleListWithCategory();
+            return View(values);
+        }
+        public IActionResult ArticleListWithAppUser()
+        {
+            var values = _articleService.TArticleListWithAppUser();
+            return View(values);
+        }
+        [HttpGet]
+        public IActionResult CreateArticle()
+        {
+            var categoryList =_categoryService.TGetAll();
+            List<SelectListItem>values1=(from x in  categoryList
+                                         select new SelectListItem
+                                         {
+                                             Text=x.CategoryName,
+                                             Value = x.CategoryId.ToString()
+                                         }).ToList();
+            ViewBag.v1= values1;
+            var appUserList = _appUserService.TGetAll();
+            List<SelectListItem> values2=(from x in appUserList
+                                          select new SelectListItem
+                                          {
+                                              Text = x.Name + " " + x.Surname,
+                                              Value = x.Id.ToString()
+                                          }).ToList();
+            ViewBag.v2 = values2;
+            return View();
+        }
     }
+   
 }
