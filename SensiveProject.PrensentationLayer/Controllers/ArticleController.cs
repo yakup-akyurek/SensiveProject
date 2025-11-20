@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SensiveProject.BusinessLayer.Abstract;
+using SensiveProject.EntityLayer.Concrete;
 using System.Drawing.Text;
 
 namespace SensiveProject.PrensentationLayer.Controllers
@@ -55,6 +56,13 @@ namespace SensiveProject.PrensentationLayer.Controllers
                                           }).ToList();
             ViewBag.v2 = values2;
             return View();
+        }
+        [HttpPost]
+        public IActionResult CreateArticle(Article article)
+        {
+            article.CreatedTime=DateTime.Now;
+            _articleService.TInsert(article);
+            return RedirectToAction("ArticleListWithAppUser");
         }
     }
    
