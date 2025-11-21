@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SensiveProject.BusinessLayer.Abstract;
 using SensiveProject.EntityLayer.Concrete;
-using System.Drawing.Text;
+
 
 namespace SensiveProject.PrensentationLayer.Controllers
 {
@@ -62,6 +62,41 @@ namespace SensiveProject.PrensentationLayer.Controllers
         {
             article.CreatedTime=DateTime.Now;
             _articleService.TInsert(article);
+            return RedirectToAction("ArticleListWithAppUser");
+        }
+        public IActionResult Deletearticle(int id) 
+        {
+            _articleService.TDelete(id);
+            return RedirectToAction("ArticleListWithAppUser");
+        }
+        [HttpGet]
+        public IActionResult UpdateArticle(int id)
+        {
+            var categoryList = _categoryService.TGetAll();
+            List<SelectListItem> values1 = (from x in categoryList
+                                            select new SelectListItem
+                                            {
+                                                Text = x.CategoryName,
+                                                Value = x.CategoryId.ToString()
+                                            }).ToList();
+            ViewBag.v1 = values1;
+            var appUserList = _appUserService.TGetAll();
+            List<SelectListItem> values2 = (from x in appUserList
+                                            select new SelectListItem
+                                            {
+                                                Text = x.Name + " " + x.Surname,
+                                                Value = x.Id.ToString()
+                                            }).ToList();
+            ViewBag.v2 = values2;
+            var updatedValue=_articleService.TGetById(id);
+            return View(updatedValue);
+
+        }
+        [HttpPost]
+        public IActionResult UpdateArticle(Article article)
+        {
+            
+            _articleService.TUpdate(article);
             return RedirectToAction("ArticleListWithAppUser");
         }
     }

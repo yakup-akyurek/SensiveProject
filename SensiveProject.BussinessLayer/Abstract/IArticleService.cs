@@ -11,6 +11,7 @@ namespace SensiveProject.BusinessLayer.Abstract
     {
         List<Article> TArticleListWithCategory();
         List<Article> TArticleListWithAppUser();
+        public Article TGetLastArticle();
 
 
 

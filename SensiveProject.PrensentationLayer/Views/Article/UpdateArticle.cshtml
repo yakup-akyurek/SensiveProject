@@ -1,0 +1,30 @@
+﻿@model Article
+@{
+    Layout = null;
+}
+
+<link href="/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<div>
+    <form method="post">
+        <input type="hidden"asp-for="ArticleId" />
+        <br />
+        <label>Makele başlığı</label>
+        <input type="text" asp-for="Title" class="form-control" />
+        <br />
+        <label>Makele Açıklaması</label>
+        <input type="text" asp-for="Description" class="form-control" />
+        <br />
+        <label>Kapak foto url</label>
+        <input type="text" asp-for="CoveImageUrl" class="form-control" />
+        <br />
+        <label>kategori</label>
+        @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.v1, new { @class = "form-control" }))
+        <br />
+        <label>kullanıcı</label>
+        @Html.DropDownListFor(x => x.AppUserId, (List<SelectListItem>)ViewBag.v2, new { @class = "form-control" }))
+
+        <button class="btn btn-info">Makaleyi güncelle</button>
+
+    </form>
+</div>
