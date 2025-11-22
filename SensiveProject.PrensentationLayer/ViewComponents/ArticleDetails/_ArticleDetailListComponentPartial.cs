@@ -14,7 +14,7 @@ namespace SensiveProject.PrensentationLayer.ViewComponents.AIrticleDetails
 
         public IViewComponentResult Invoke(int id)
         {
-            id=1; //şimdilik sabit id verdik
+           
             var value = _articleService.TGetById(id);
             return View(value);
         }

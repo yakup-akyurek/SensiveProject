@@ -11,6 +11,7 @@ namespace SensiveProject.PrensentationLayer.Controllers
         private readonly IArticleService _articleService;
         private readonly ICategoryService _categoryService;
         private readonly IAppUserService _appUserService;
+        
 
         public ArticleController(IArticleService articleService, ICategoryService categoryService, IAppUserService appUserService)
         {
@@ -105,10 +106,12 @@ namespace SensiveProject.PrensentationLayer.Controllers
             var values = _articleService.TGetById(id);
 
             // Yorum component'ine göndereceğimiz id
-            ViewBag.ArticleId = id;      // veya values.ArticleId da yazabilirsin
+            ViewBag.i = id;      // veya values.ArticleId da yazabilirsin
 
             return View(values);
         }
+
+       
 
     }
 

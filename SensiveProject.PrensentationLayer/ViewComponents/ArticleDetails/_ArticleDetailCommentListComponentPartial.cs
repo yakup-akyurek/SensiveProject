@@ -14,6 +14,7 @@ namespace SensiveProject.PrensentationLayer.ViewComponents.ArticleDetails
 
         public IViewComponentResult Invoke(int id)
         {
+            ViewBag.i = id;
             
             var values = _commentService.TGetCommentsByArticleId(id);
             return View(values);
