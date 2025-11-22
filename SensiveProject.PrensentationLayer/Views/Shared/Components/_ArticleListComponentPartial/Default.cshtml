@@ -1,4 +1,4 @@
-﻿@model List<Article>
+﻿@*@model List<Article>
 <div class="blog-list">
     <h2>Blog Listesiii</h2>
     @foreach (var item in Model)
@@ -6,9 +6,29 @@
         <div class="blog-item">
             <img src="@item.CoveImageUrl" alt="Blog 1 Kapak">
             <a href="https://example.com/blog1" target="_blank">@item.Title</a>
-            <p>@item.Description.Substring(0,75)...<a href=" "class="btn btn-primary"> Devamını oku </a> </p>
+            <p>@item.Description.Substring(0,50)...<a href=" "class="btn btn-primary"> Devamını oku </a> </p>
         </div>
 
     }
+</div>*@
+@model List<Article>
+
+<div class="blog-list">
+    <h2>Blog Listesiii</h2>
+    @foreach (var item in Model)
+    {
+        var desc = item.Description ?? string.Empty;
+        var shortDesc = desc.Length > 100 ? desc.Substring(0, 100) + "..." : desc;
+
+        <div class="blog-item">
+            <img src="@item.CoveImageUrl" href="/Article/ArticleDetail/@item.ArticleId" alt="Blog 1 Kapak" />
+            <a href="/Article/ArticleDetail/@item.ArticleId" target="_blank">@item.Title</a>
+            <p>
+                @shortDesc
+                    <a href="/Article/ArticleDetail/@item.ArticleId" class="btn btn-primary">Devamını oku</a>
+            </p>
+        </div>
+    }
 </div>
+
 

@@ -99,6 +99,17 @@ namespace SensiveProject.PrensentationLayer.Controllers
             _articleService.TUpdate(article);
             return RedirectToAction("ArticleListWithAppUser");
         }
+
+        public IActionResult ArticleDetail(int id)
+        {
+            var values = _articleService.TGetById(id);
+
+            // Yorum component'ine göndereceğimiz id
+            ViewBag.ArticleId = id;      // veya values.ArticleId da yazabilirsin
+
+            return View(values);
+        }
+
     }
-   
+
 }

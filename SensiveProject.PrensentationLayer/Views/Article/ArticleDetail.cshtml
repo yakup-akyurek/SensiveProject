@@ -1,0 +1,32 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+    @await Component.InvokeAsync("_ArticleDetailHeadComponentPartial")
+<body>
+
+    <div class="container">
+        @await Component.InvokeAsync("_ArticleDetailListComponentPartial")
+
+
+        @await Component.InvokeAsync("_ArticleDetailCommentListComponentPartial",
+                 new { id = ViewBag.ArticleId })
+
+
+
+
+       
+
+        <!-- Yeni Yorum Yapma -->
+        <div class="new-comment">
+            <h2>Yeni Yorum Yap</h2>
+            <textarea placeholder="Yorumunuzu buraya yazın..."></textarea>
+            <button class="btn">Gönder</button>
+        </div>
+    </div>
+
+</body>
+</html>
