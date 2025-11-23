@@ -13,5 +13,7 @@ namespace SensiveProject.DataAccess.Abstract
         List<Article> ArticleListWithAppUser();
 
         Article GetLastArticle();
+
+        List<Article> GetArticlesByAppUserId(int id);
     }
 }

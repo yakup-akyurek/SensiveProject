@@ -1,11 +1,10 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
 
 <!DOCTYPE html>
 <html lang="en">
-    @await Component.InvokeAsync("_ArticleDetailHeadComponentPartial")
+@await Component.InvokeAsync("_ArticleDetailHeadComponentPartial")
 <body>
 
     <div class="container">
@@ -17,10 +16,10 @@
 
 
 
-        @await Html.PartialAsync("~/Views/Comment/AddComment.cshtml",new {ViewBag.i})
-       
+       @*  @await Html.PartialAsync("~/Views/Comment/AddComment.cshtml", new { ViewBag.i }) *@
 
-       
+
+
     </div>
 
 </body>

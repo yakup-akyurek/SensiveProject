@@ -15,6 +15,7 @@ namespace SensiveProject.PrensentationLayer.Controllers
         [HttpGet]
         public IActionResult AddComment()
         {
+            
             return PartialView();
         }
         [HttpPost]

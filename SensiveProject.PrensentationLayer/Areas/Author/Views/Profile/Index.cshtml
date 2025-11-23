@@ -1,0 +1,30 @@
+﻿@model SensiveProject.PrensentationLayer.Areas.Author.Models.UserEditViewModel
+@{
+    Layout = null;
+}
+<link href="c:\users\akyur\source\repos\sensiveproject\sensiveproject.prensentationlayer\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css" rel="stylesheet" />
+
+<form method="post">
+    <div class="container">
+        <label >adınız</label>
+        <input type="text" asp-for="Name" class="form-control"/>
+        <br />
+        <label>soyadınız</label>
+        <input type="text" asp-for="Surname" class="form-control" />
+        <br />
+        <label>kullancı adınız</label>
+        <input type="text" asp-for="Username" class="form-control" />
+        <br />
+        <label>email adresiniz</label>
+        <input type="text" asp-for="Email" class="form-control" />
+        <br />
+        <label>şifreniz</label>
+        <input type="text" asp-for="Password" class="form-control" />
+        <br />
+        <button class="btn btn-info">profili düzenle</button>
+
+    </div>
+
+
+
+</form>
