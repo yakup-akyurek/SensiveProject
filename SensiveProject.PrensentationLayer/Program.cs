@@ -1,6 +1,8 @@
+using FluentValidation.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;
 using SensiveProject.BusinessLayer.Abstract;
 using SensiveProject.BusinessLayer.Concrete;
+using SensiveProject.BusinessLayer.Container;
 using SensiveProject.DataAccess.Abstract;
 using SensiveProject.DataAccess.Context;
 using SensiveProject.DataAccess.Entity_Framework;
@@ -12,27 +14,14 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 //buraya yazýlan kodlar DI olarak tüm projede kullanýlýr
 builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<SensiveContext>().AddErrorDescriber<CustomIdentiytValidator>();
+builder.Services.ContainerDependicies();
 
 builder.Services.AddDbContext<SensiveContext>();
 
-builder.Services.AddScoped<ICategoryDal,EfCategoryDal>();
-builder.Services.AddScoped<ICategoryService, CategoryManager>();
-
-builder.Services.AddScoped<IArticleDal, EfArticleDal>();
-builder.Services.AddScoped<IArticleService, ArticleManager>();
-
-builder.Services.AddScoped<ICommentDal, EfCommentDal>();
-builder.Services.AddScoped<ICommentService, CommentManager>();
-
-builder.Services.AddScoped<IContactDal, EfContactDal>();
-builder.Services.AddScoped<IContactService, ContactManager>();
-
-builder.Services.AddScoped<IAppUserService, AppUserManager>();
-builder.Services.AddScoped<IAppUserDal, EfAppUserDal>();
 
 
 
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews().AddFluentValidation();
 
 
 var app = builder.Build();
