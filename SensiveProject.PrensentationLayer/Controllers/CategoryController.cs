@@ -5,7 +5,7 @@ using SensiveProject.BusinessLayer.ValidationRules.CategoryValidationRules;
 using SensiveProject.EntityLayer.Concrete;
 
 namespace SensiveProject.PrensentationLayer.Controllers
-{
+{//update
     public class CategoryController : Controller
     {
         private readonly ICategoryService _categoryService;
